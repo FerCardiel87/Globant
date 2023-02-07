@@ -126,9 +126,40 @@ Requirements
 ● Number of employees hired for each job and department in 2021 divided by quarter. The
 table must be ordered alphabetically by department and job.
 
+```TSQL  
+        SELECT d.department, j.job, e.department_id as 'Q1', COUNT(*) as 'Q2',e.job_id as 'Q3', DATEPART(quarter,e.datetime) AS 'Q4'
+        FROM hired_employees e,
+             departments d,
+           jobs j
+        WHERE e.id = d.id and e.id = j.id and datetime > '2021'
+        GROUP BY d.department, j.job, e.department_id, e.job_id, DATEPART(quarter,e.datetime)
+        HAVING COUNT(*) > 1/3
+        ORDER BY d.department, j.job, e.department_id, e.job_id, DATEPART(quarter,e.datetime), COUNT(*) ASC
+``` 
+
+output: 
+
+![image](https://user-images.githubusercontent.com/60296248/217205752-65b2fa38-0ddc-4cd0-8309-69b741d97d05.png)
+
+
 ● List of ids, name and number of employees hired of each department that hired more
 employees than the mean of employees hired in 2021 for all the departments, ordered
 by the number of employees hired (descending).
+
+```TSQL
+        SELECT d.department, COUNT(e.id) as 'hired'
+        FROM departments d
+        JOIN hired_employees e
+        ON e.department_id=d.id
+        WHERE  datetime > '2021'
+        GROUP BY d.department
+        ORDER BY d.department DESC
+```
+output:
+
+![image](https://user-images.githubusercontent.com/60296248/217205831-34d388d7-a366-44ce-98ae-f665881a453e.png)
+
+
 
 Not mandatory, but taken into account:
 
