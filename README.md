@@ -25,4 +25,8 @@ by the number of employees hired (descending).
 Not mandatory, but taken into account:
 ● Create a visual report for each requirement using your favorite tool
 
-https://app.powerbi.com/groups/me/reports/474d7f35-6166-4b82-9485-ccb6b90950b7/ReportSection
+
+[View Report](https://app.powerbi.com/groups/me/reports/474d7f35-6166-4b82-9485-ccb6b90950b7/ReportSection)
+
+
+
